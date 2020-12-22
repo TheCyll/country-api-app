@@ -16,6 +16,38 @@
     height: 100vh;
 }
 
+.country-card {
+    min-height:300px;    
+    min-width:250px; 
+}
+.country-card-content{
+    border: none;
+    box-shadow: 0 3px 5px black;
+    box-shadow: 0 5px 15px hsl(0, 0%, 52%);
+}
+.flag {
+    height: 40%;  
+    width: 100%;  
+    object-fit: cover;    
+}
+.country-card-text{
+    height: 200px;
+    width: 100%;
+    color: hsl(0, 0%, 52%);
+    padding: 10%;
+}
+.country{
+    padding-bottom: 10%;
+    font-size: 20px;
+}
+.country-info{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
 /* TEMPLATE PRUEBA */
 .darkmode-toggler{
     width: 100px;
