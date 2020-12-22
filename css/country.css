@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container-header {
+    max-width: 100%;
+    padding: 0;    
+}
+
+.principal{   
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    height: 100vh;
+}
+
+.back-button {
+    width: 100px;
+    height: 30px;    
+    background-color: white;    
+    box-shadow: 0 0 5px hsl(0, 0%, 22%);
+    box-shadow: 0 0 10px hsl(0, 0%, 60%);
+}
+
+/* TEMPLATE PRUEBA */
+.darkmode-toggler{
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    margin-right: 20px;
+}
