@@ -1,113 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Country API</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Country API</title>
 </head>
+
 <body>
-    <header class="container m-0 container-header bg-white">
-        <nav class="navbar navbar-light w-100 m-0 p-0">
-            <a class="navbar-brand p-2" href="#"><h1>Country API</h1></a>
-            <div class="darkmode-toggler"></div>
-        </nav>        
-    </header>
+  <header class="container m-0 container-header bg-white">
+    <nav class="navbar navbar-light w-100 m-0 p-0">
+      <a class="navbar-brand p-2" href="#">
+        <h1>Country API</h1>
+      </a>
+      <div class="darkmode-toggler"></div>
+    </nav>
+  </header>
 
-    <div class="principal container bg-light">
+  <div id="test"></div>
 
-        <div class="container mw-100  pt-4 px-5">
-            <div class="input-container pb-4 bg-light row justify-content-between pb-4">
-                <div class="input-group my-3 w-auto col-md-4">
-                    <input type="text" class="form-control" placeholder="Search for a country" id="search_input" aria-describedby="country-name-search">
-                </div>
-                <div class="input-group my-3 w-auto mh-100 col-md-4 ">                
-                    <select class="form-select mh-100 mr-3" style="width:170px;" id="search_select">
-                      <option selected>Filter by region</option>
-                      <option value="africa">Africa</option>
-                      <option value="america">America</option>
-                      <option value="asia">Asia</option>
-                      <option value="europe">Europe</option>
-                      <option value="oceania">Oceania</option>
-                    </select>
-                </div>               
-            </div> 
-            <div class="container mw-100 p-0">
-                <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-auto g-sm-5 card-container">
-                    <div class="col country-card">
-                        <div class="border text-light mb-4 country-card-content">                            
-                            <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag" class="flag"/>
-                            <div class="country-card-text">
-                                <h1 class="country"><strong>Italy</strong></h1>
-                                <div class="country-info">
-                                    <p class="population"><strong>Population: </strong>12,007,312</p>
-                                    <p class="region"><strong>Region: </strong>Europe</p>
-                                    <p class="capital"><strong>Capital: </strong>Rome</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                 
-                    <div class="col country-card">
-                        <div class="border text-light mb-4 country-card-content">                            
-                            <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag" class="flag"/>
-                            <div class="country-card-text">
-                                <div class="country"><strong>Italy</strong></div>
-                                <div class="country-info">
-                                    <div class="population"><strong>Population: </strong>12,007,312</div>
-                                    <div class="region"><strong>Region: </strong>Europe</div>
-                                    <div class="capital"><strong>Capital: </strong>Rome</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                 
-                    <div class="col country-card">
-                        <div class="border text-light mb-4 country-card-content">                            
-                            <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag" class="flag"/>
-                            <div class="country-card-text">
-                                <div class="country"><strong>Italy</strong></div>
-                                <div class="country-info">
-                                    <div class="population"><strong>Population: </strong>12,007,312</div>
-                                    <div class="region"><strong>Region: </strong>Europe</div>
-                                    <div class="capital"><strong>Capital: </strong>Rome</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                 
-                    <div class="col country-card">
-                        <div class="border text-light mb-4 country-card-content">                            
-                            <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag" class="flag"/>
-                            <div class="country-card-text">
-                                <div class="country"><strong>Italy</strong></div>
-                                <div class="country-info">
-                                    <div class="population"><strong>Population: </strong>12,007,312</div>
-                                    <div class="region"><strong>Region: </strong>Europe</div>
-                                    <div class="capital"><strong>Capital: </strong>Rome</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                 
+  <div class="principal container bg-light">
+
+    <div class="container mw-100  pt-4 px-5">
+      <div class="input-container pb-4 bg-light row justify-content-between pb-4">
+        <div class="input-group my-3 w-auto col-md-4">
+          <input type="text" class="form-control" placeholder="Search for a country" id="search_input"
+            aria-describedby="country-name-search">
+        </div>
+        <div class="input-group my-3 w-auto mh-100 col-md-4 ">
+          <select class="form-select mh-100 mr-3" style="width:170px;" id="search_select">
+            <option value="" selected>Filter by region</option>
+            <option value="africa">Africa</option>
+            <option value="americas">Americas</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+          </select>
+        </div>
+      </div>
+      <div class="container mw-100 p-0">
+        <div id="country-container" class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-auto g-sm-5">
                     
-                    
-                                                                            
+          <!-- <div id="country-card" class="col">
+            <div class="border text-light mb-4 country-card-content">
+              <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag"
+                class="flag" />
+              <div class="country-card-text">
+                <div class="country"><strong>Italy</strong></div>
+                <div class="country-info">
+                  <div class="population"><strong>Population: </strong>12,007,312</div>
+                  <div class="region"><strong>Region: </strong>Europe</div>
+                  <div class="capital"><strong>Capital: </strong>Rome</div>
                 </div>
+              </div>
             </div>
+          </div> -->          
 
         </div>
-
-
-
-
-        
+      </div>
     </div>
+  </div>
 
+  <!-- Code -->
+  <script type="module" src="./src/index.js"></script>
 
-
-
-
-
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
 
 </body>
+
 </html>

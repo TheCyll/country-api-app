@@ -16,17 +16,17 @@
     height: 100vh;
 }
 
-.country-card {
+#country-card {
     min-height:300px;    
     min-width:250px; 
 }
-.country-card-content{
+.country-card-content{    
     border: none;
     box-shadow: 0 3px 5px black;
     box-shadow: 0 5px 15px hsl(0, 0%, 52%);
 }
-.flag {
-    height: 40%;  
+.flag {        
+    height: 150px;  
     width: 100%;  
     object-fit: cover;    
 }
