@@ -26,41 +26,41 @@ export default class CountryContainer {
     return new Country(data);
   }
 
-  postCountries(region , search ) {
-    if( region ){
-      this.country_container.innerHTML = "<h1>Loading...</h1>";      
-      this.FetchAPI.changeURL( config.URL + `region/${region}` );
+  postCountries(region, search) {
+    this.country_container.innerHTML = "<h1>Loading...</h1>"; 
+    this.FetchAPI.fetchData().then( (response) => {
 
-      this.FetchAPI.fetchData().then( (response) => { 
-        return response.filter( country => 
-          ( country.name.toLowerCase().includes(search.toLowerCase()) )
-        );
-      }).then( (response) => {
-        response.length === 0 ?
-          this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`
-        : this.postCountry(response);  
-      });
+      const allCountries = response; 
 
-    }else {      
-      this.country_container.innerHTML = "<h1>Loading...</h1>";
+      if( region !== ''){
+        const regionCountries = allCountries.filter( (country) => country.region.toLowerCase() === region.toLowerCase() );
+        this.renderCard(regionCountries);        
 
-      search ? this.FetchAPI.changeURL( config.URL + `name/${ search }`) 
-        : this.FetchAPI.changeURL( config.URL );
-      
-      this.FetchAPI.fetchData().then((response) => {                     
-        this.postCountry(response);        
-      }).catch( () => {            
-        this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`;
-      });
-    }
+        if (search !== ''){
+          const searchCountries = regionCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
+          searchCountries.length !== 0 ? this.renderCard(searchCountries)
+          : this.country_container.innerHTML = `<h1>There's no country in <strong>${region}</strong> with <strong>${search}</strong></h1>`
+        }
+      }
+
+      if (region === '' && search !== ''){
+        const searchCountries = allCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
+        searchCountries.length !== 0 ? this.renderCard(searchCountries)
+          : this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`
+      }
+
+      if (region === '' && search === ''){
+        this.renderCard(allCountries);
+      }
+
+    }).catch( err => this.country_container.innerHTML = `<h1>Uh, some error ocurred <strong>${err}</strong></h1>`);
   }
 
-  postCountry( response ){
-    this.country_container.innerHTML = "";      
-      response.forEach( (country) => { 
-        this.country_container.innerHTML += this.createCountry(country).createCard();
-      });
-  }
-
+  renderCard(arrayCountries) { 
+    this.country_container.innerHTML = ""; 
+    arrayCountries.forEach( country => {        
+      this.country_container.innerHTML += this.createCountry(country).createCard();
+    });  
+  } 
 }
 
