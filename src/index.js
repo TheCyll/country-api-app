@@ -6,3 +6,4 @@ window.onload = () => {
   const App = new CountryContainer();
   App.render();  
 };
+
