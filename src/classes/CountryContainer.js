@@ -6,6 +6,7 @@ import config from '../api/config.js';
 import InputManager from "./InputManager.js";
 import SelectManager from "./SelectManager.js";
 import Country from "./Country.js";
+import { listenPagination, paginate } from "../utils/utils.js";
 
 export default class CountryContainer {
   constructor() {
@@ -30,7 +31,7 @@ export default class CountryContainer {
     this.country_container.innerHTML = "<h1>Loading...</h1>"; 
     this.FetchAPI.fetchData().then( (response) => {
 
-      const allCountries = response; 
+      const allCountries = response;       
 
       if( region !== ''){
         const regionCountries = allCountries.filter( (country) => country.region.toLowerCase() === region.toLowerCase() );
@@ -49,8 +50,10 @@ export default class CountryContainer {
           : this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`
       }
 
-      if (region === '' && search === ''){
-        this.renderCard(allCountries);
+      if (region === '' && search === ''){  
+        /* This function paginates the countries instead of charging all of them
+        (takes a lot of time to charge with all countries, aprox 9s) */
+        listenPagination(allCountries, 24, 1,this.renderCard.bind(this));        
       }
 
     }).catch( err => this.country_container.innerHTML = `<h1>Uh, some error ocurred <strong>${err}</strong></h1>`);
@@ -60,7 +63,7 @@ export default class CountryContainer {
     this.country_container.innerHTML = ""; 
     arrayCountries.forEach( country => {        
       this.country_container.innerHTML += this.createCountry(country).createCard();
-    });  
+    });     
   } 
 }
 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css" />
   <title>Country API</title>
 </head>
@@ -13,25 +14,29 @@
 <body>
   <header class="container m-0 container-header bg-white">
     <nav class="navbar navbar-light w-100 m-0 p-0">
-      <a class="navbar-brand p-2" href="#">
+      <a class="p-2" href="#">
         <h1>Country API</h1>
       </a>
-      <div class="darkmode-toggler"></div>
+      <button id="darkmode-toggler">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div id="ball"></div>
+      </button>
     </nav>
   </header>
 
   <div id="test"></div>
 
-  <div class="principal container bg-light">
+  <div class="principal container">
 
     <div class="container mw-100  pt-4 px-5">
-      <div class="input-container pb-4 bg-light row justify-content-between pb-4">
+      <div class="input-container pb-4 row justify-content-between pb-4">
         <div class="input-group my-3 w-auto col-md-4">
           <input type="text" class="form-control" placeholder="Search for a country" id="search_input"
             aria-describedby="country-name-search">
         </div>
         <div class="input-group my-3 w-auto mh-100 col-md-4 ">
-          <select class="form-select mh-100 mr-3" style="width:170px;" id="search_select">
+          <select class="form-select mh-100 mr-3" id="search_select">
             <option value="" selected>Filter by region</option>
             <option value="Africa">Africa</option>
             <option value="Americas">Americas</option>
@@ -43,28 +48,30 @@
       </div>
       <div class="container mw-100 p-0">
         <div id="country-container" class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-auto g-sm-5">
-                    
-          <!-- <div id="country-card" class="col">
-            <div class="border text-light mb-4 country-card-content">
-              <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="country flag"
-                class="flag" />
-              <div class="country-card-text">
-                <div class="country"><strong>Italy</strong></div>
-                <div class="country-info">
-                  <div class="population"><strong>Population: </strong>12,007,312</div>
-                  <div class="region"><strong>Region: </strong>Europe</div>
-                  <div class="capital"><strong>Capital: </strong>Rome</div>
-                </div>
-              </div>
-            </div>
-          </div> -->          
-
-        </div>
+            <!-- Cards of countries -->            
+        </div> 
+        <div class="pagination-container">
+          <div class="pagination">
+            <a id="before_page">&laquo;</a>   
+            <a class=pag_step >1</a>
+            <a class=pag_step >2</a>
+            <a class=pag_step >3</a>
+            <a class=pag_step >4</a>
+            <a class=pag_step >5</a>
+            <a class=pag_step >6</a>
+            <a class=pag_step >7</a>
+            <a class=pag_step >8</a>
+            <a class=pag_step >9</a>
+            <a class=pag_step >10</a>
+            <a class=pag_step >11</a>
+            <a id="next_page">&raquo;</a>
+          </div> 
       </div>
     </div>
   </div>
 
   <!-- Code -->
+  <script src="src/utils/darkmode.js"></script>
   <script type="module" src="./src/index.js"></script>
 
   <!-- Bootstrap -->

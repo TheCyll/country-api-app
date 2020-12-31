@@ -22,7 +22,7 @@ export default class Country {
   createCard() {
     return `
     <a class="text-decoration-none" href="${window.location.origin}/country.html?name=${this.name}">
-    <div id="country-card" class="col">
+    <div class="country-card" class="col">
       <div class="border text-light mb-4 country-card-content">                            
         <img src=${this.flag} alt="flag of ${this.name}" class="flag"/>
         <div class="country-card-text">
@@ -42,7 +42,7 @@ export default class Country {
     return `
     <div class="container pt-5 px-4">
       <div class="back-button d-flex justify-content-center rounded">
-        <a href="javascript:history.back()" class="text-decoration-none">◀ Back</a>
+        <a href="javascript:history.back()" class="text-decoration-none"><i class="fas fa-arrow-left"></i> Back</a>
       </div>
     </div>
     <div class="container pt-5 px-4">
@@ -79,7 +79,7 @@ export default class Country {
                 return`
                 <div class="col-md-6 col-lg-3">
                   <a class="text-decoration-none" href="${window.location.origin}/country.html?name=${country}">
-                      <p class="border border-secondary rounded p-1 text-center">${country}</p>
+                      <p class="tag rounded p-1 text-center">${country}</p>
                   </a>
                 </div>`
               }).join("") ) : `<div>Island, only water around...</div>`

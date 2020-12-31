@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/country.css" />
   <title>Country API</title>
 </head>
@@ -13,16 +14,21 @@
 <body>
   <header class="container m-0 container-header bg-white">
     <nav class="navbar navbar-light w-100 m-0 p-0">
-      <a class="navbar-brand p-2" href="index.html">
+      <a class="p-2" href="index.html">
         <h1>Country API</h1>
       </a>
-      <div class="darkmode-toggler"></div>
+      <button id="darkmode-toggler">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div id="ball"></div>
+      </button>
     </nav>
   </header>
 
   <div id="page-container"></div>
 
   <!-- Code  -->
+  <script src="src/utils/darkmode.js"></script>
   <script type="module" src="src/classes/CountryPage/CountryPage.js"></script>
 
   <!-- Bootstrap -->
