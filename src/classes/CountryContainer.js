@@ -6,7 +6,7 @@ import config from '../api/config.js';
 import InputManager from "./InputManager.js";
 import SelectManager from "./SelectManager.js";
 import Country from "./Country.js";
-import Paginator from "../utils/Paginator.js";
+import Paginator from "../classes/Paginator/Paginator.js";
 
 export default class CountryContainer {
   constructor() {
