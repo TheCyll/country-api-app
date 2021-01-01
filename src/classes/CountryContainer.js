@@ -51,7 +51,7 @@ export default class CountryContainer {
       }
 
       if (region === '' && search === ''){ 
-        minimalPagination( allCountries, 24, this.renderCard.bind(this) );
+        minimalPagination( allCountries, 12, this.renderCard.bind(this) );
       }
 
     }).catch( err => this.country_container.innerHTML = `<h1>Uh, some error ocurred <strong>${err}</strong></h1>`);
