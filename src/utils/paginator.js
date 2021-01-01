@@ -6,7 +6,13 @@ export default class Paginator {
     this.render = renderFunction; 
     this.arr = arr;
     this.page_size = page_size;
-    this.createPaginator();
+    this.pagination = document.getElementById('pagination');
+    this.pagination.innerHTML = '';    
+    this.pagination.innerHTML = `
+      <button id="before_page">&laquo;</button>
+      <div id="pages_count">${this.counter}/${this.maxNumPages}</div> 
+      <button id="next_page">&raquo;</button>
+    ` ;
     this.left_arrow = document.getElementById('before_page');
     this.right_arrow = document.getElementById('next_page');
     this.pages_count = document.getElementById('pages_count');
@@ -42,15 +48,5 @@ export default class Paginator {
         this.render(this.paginate());
       }
     }); 
-  }
-
-  createPaginator() {
-    this.pagination = document.getElementById('pagination');
-    this.pagination.innerHTML = '';    
-    this.pagination.innerHTML = `
-      <button id="before_page">&laquo;</button>
-      <div id="pages_count">${this.counter}/${this.maxNumPages}</div> 
-      <button id="next_page">&raquo;</button>
-    ` ;
-  } 
+  }  
 }
