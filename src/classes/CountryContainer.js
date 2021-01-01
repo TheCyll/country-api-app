@@ -6,7 +6,7 @@ import config from '../api/config.js';
 import InputManager from "./InputManager.js";
 import SelectManager from "./SelectManager.js";
 import Country from "./Country.js";
-import { minimalPagination } from "../utils/paginator.js";
+import Paginator from "../utils/Paginator.js";
 
 export default class CountryContainer {
   constructor() {
@@ -35,26 +35,29 @@ export default class CountryContainer {
 
       if( region !== ''){
         const regionCountries = allCountries.filter( (country) => country.region.toLowerCase() === region.toLowerCase() );
-        minimalPagination( regionCountries, 12, this.renderCard.bind(this) );       
+        new Paginator( regionCountries, 12, this.renderCard.bind(this) ).show();       
 
         if (search !== ''){
           const searchCountries = regionCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
-          searchCountries.length !== 0 ? minimalPagination( searchCountries, 12, this.renderCard.bind(this) )
+          searchCountries.length !== 0 ? new Paginator( searchCountries, 12, this.renderCard.bind(this) ).show()
           : this.country_container.innerHTML = `<h1>There's no country in <strong>${region}</strong> with <strong>${search}</strong></h1>`
         }
       }
 
       if (region === '' && search !== ''){
         const searchCountries = allCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
-        searchCountries.length !== 0 ? minimalPagination( searchCountries, 12, this.renderCard.bind(this) )
+        searchCountries.length !== 0 ? new Paginator( searchCountries, 12, this.renderCard.bind(this) ).show()
           : this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`
       }
 
       if (region === '' && search === ''){ 
-        minimalPagination( allCountries, 12, this.renderCard.bind(this) );
+        new Paginator( allCountries, 12, this.renderCard.bind(this) ).show();
       }
 
-    }).catch( err => this.country_container.innerHTML = `<h1>Uh, some error ocurred <strong>${err}</strong></h1>`);
+    }).catch( err => {
+      this.country_container.innerHTML = `<h1>Uh, some error ocurred <strong></strong></h1>`
+      console.log(err);
+    });
   }
 
   renderCard(arrayCountries) { 
