@@ -27,6 +27,10 @@ export default class CountryContainer {
     return new Country(data);
   }
 
+  createPaginator(arr, page_size, renderFunction) {
+    return new Paginator(arr, page_size, renderFunction);
+  }
+
   postCountries(region, search) {
     this.country_container.innerHTML = "<h1>Loading...</h1>"; 
     this.FetchAPI.fetchData().then( (response) => {
@@ -35,23 +39,29 @@ export default class CountryContainer {
 
       if( region !== ''){
         const regionCountries = allCountries.filter( (country) => country.region.toLowerCase() === region.toLowerCase() );
-        new Paginator( regionCountries, 12, this.renderCard.bind(this) ).show();       
+        this.createPaginator( regionCountries, 12, this.renderCard.bind(this) ).show();       
 
         if (search !== ''){
           const searchCountries = regionCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
-          searchCountries.length !== 0 ? new Paginator( searchCountries, 12, this.renderCard.bind(this) ).show()
-          : this.country_container.innerHTML = `<h1>There's no country in <strong>${region}</strong> with <strong>${search}</strong></h1>`
+          if(searchCountries.length > 0) {
+            this.createPaginator( searchCountries, 12, this.renderCard.bind(this) ).show();
+          } else {
+            this.insertNoFoundCountry(region, search);
+          }
         }
       }
 
       if (region === '' && search !== ''){
         const searchCountries = allCountries.filter( (country) => country.name.toLowerCase().includes( search.toLowerCase() ) );
-        searchCountries.length !== 0 ? new Paginator( searchCountries, 12, this.renderCard.bind(this) ).show()
-          : this.country_container.innerHTML = `<h1>There's no country with <strong>${search}</strong></h1>`
+        if (searchCountries.length > 0) {
+          this.createPaginator( searchCountries, 12, this.renderCard.bind(this) ).show();
+        } else { 
+          this.insertNoFoundCountry(null, search);         
+        } 
       }
 
       if (region === '' && search === ''){ 
-        new Paginator( allCountries, 12, this.renderCard.bind(this) ).show();
+        this.createPaginator( allCountries, 12, this.renderCard.bind(this) ).show();
       }
 
     }).catch( err => {
@@ -66,5 +76,16 @@ export default class CountryContainer {
       this.country_container.innerHTML += this.createCountry(country).createCard();
     });     
   } 
+
+  insertNoFoundCountry(region, search){
+    this.pagination = document.getElementById('pagination');
+    this.pagination.innerHTML = ''; 
+
+    if (region) {
+      this.country_container.innerHTML = `<h1>There's no country in <strong>${region}</strong> with <strong>${search}</strong></h1>`
+    } else {
+      this.country_container.innerHTML = `<h1>There's no country in the world with <strong>${search}</strong></h1>`
+    }
+  }
 }
 

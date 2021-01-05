@@ -29,17 +29,14 @@ export default class Paginator {
   }
 
   show() { 
-    this.pages_count.innerHTML = `${this.counter}/${this.maxNumPages}`; 
-
-    this.render(this.paginate());
+    
+    this.changeCounterOnValue();
 
     this.left_arrow.addEventListener('click', () => {
       if (this.counter === 1) {
         return;
       } else if (this.counter > 1) {
-        this.counter--;
-        this.pages_count.innerHTML = `${this.counter}/${this.maxNumPages}`;  
-        this.render(this.paginate());
+        this.changeCounterOnValue('decrement');
       }
     });
 
@@ -47,10 +44,18 @@ export default class Paginator {
       if (this.counter === this.maxNumPages) {
         return;
       } else if (this.counter < this.maxNumPages) {
-        this.counter++;
-        this.pages_count.innerHTML = `${this.counter}/${this.maxNumPages}`;  
-        this.render(this.paginate());
+        this.changeCounterOnValue('increment');
       }
     }); 
-  }  
+  } 
+  
+  changeCounterOnValue(value){
+    if (value === 'increment'){
+      this.counter++;
+    } else if (value === 'decrement' ){
+      this.counter--;
+    } 
+    this.pages_count.innerHTML = `${this.counter}/${this.maxNumPages}`;  
+    this.render(this.paginate());
+  }
 } 

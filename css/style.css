@@ -67,7 +67,9 @@ a:hover {
 }
 
 #search_input {
-    background-color: var(--main-color);    
+    background-color: var(--main-color); 
+    color: var(--text-color);   
+    caret-color: var(--link-hover); 
 }
 
 .form-control::placeholder { 
